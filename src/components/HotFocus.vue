@@ -4,14 +4,19 @@
       ref="lazyLoadElement"
       class="inner">
       <h2>시선집중</h2>
+
       <div class="swiper-outer">
-        <div class="swiper-container">
+        <div 
+        
+          ref="swiper"
+          class="swiper-container">
           <div class="swiper-wrapper">
             <div
               v-for="product in products"
               :key="product.name"
               class="swiper-slide">
-              <product-card :product="product"></product-card>
+              <product-card 
+                :product="product"></product-card>
             </div>
           </div>
         </div>
@@ -46,7 +51,7 @@ export default {
       this.products = await this.$fetch({
         requestName: "hotFocus",
       });
-      console.log("products : " + this.products);
+      
       this.$nextTick(() => {
         new Swiper(this.$refs.swiper, {
           speed: 1000,
@@ -68,8 +73,16 @@ export default {
 <style lang="scss">
 section {
   background-color: #f6f7fb;
+  h2 {
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 20px;
+  }
   .inner {
+    width: 80%;
     height: 528px;
+    margin: auto;
+    padding: 40px 0;
     .swiper-container {
       margin: -30px -16px;
       padding: 30px 16px;
